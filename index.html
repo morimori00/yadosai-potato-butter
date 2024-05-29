@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>じゃがバター</title>
+    <title>じゃがバター：限定クーポン</title>
     <style>
         body {
             margin: 0;
@@ -21,7 +21,7 @@
             margin: 0;
             padding: 50px;
             background-color: black;
-
+            transition: 0.6s;
         }
         .coupon img{
             /* make white wide shadow to see like floating */
@@ -30,6 +30,7 @@
         img {
             width: 100%;
             height: auto;
+            transition: 1s;
         }
         .line-it-button{
             margin: 20px;
@@ -40,17 +41,48 @@
             text-align: center;
         }
     </style>
+    <script>
+        //クーポン画像がタップされたとき、縦向きに拡大する
+        islarge = false;
+        function enlargeCoupon() {
+            if (islarge) {
+                islarge = false;
+                //couponのpaddingを50pxにする
+                var coupondiv = document.querySelector('.coupon');
+                coupondiv.style.padding = '50px';
+                coupondiv.style.height="auto";
+                var coupon = document.querySelector('.coupon img');
+                coupon.style.transform = 'rotate(0deg)';
+                coupon.style.width = '100%';
+                coupon.style.height = 'auto';
+                //couponを元の位置に戻す
+                coupon.style.marginTop = '0';
+            } else {
+                islarge = true;
+                //couponのpaddingを0にする
+                var coupondiv = document.querySelector('.coupon');
+                coupondiv.style.padding = '0';
+                coupondiv.style.height="95vh";
+                var coupon = document.querySelector('.coupon img');
+                coupon.style.transform = 'rotate(90deg)';
+                coupon.style.width = '100vw';
+                coupon.style.height = 'auto';
+                //couponを少し下に動かす
+                coupon.style.marginTop = '120px';
+            }
+        }
+    </script>
 </head>
 <body>
-    <div class="coupon">
-        <img src="notro1.png" alt="Image 2">
+    <div onclick="enlargeCoupon()"  class="coupon">
+        <img src="notro2.png" alt="Image 2">
     </div>
     <div class="container"> 
         <img src="2.png" alt="Image 2">
         <div class="c-line">
-        <<div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="https://x.gd/Lamm3" data-color="default" data-size="large" data-count="false" data-ver="3" style="display: none;"></div>
-<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-        </div>
+            <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="https://x.gd/Lamm3" data-color="default" data-size="large" data-count="false" data-ver="3" style="display: none;"></div>
+            <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+</div>
         <img src="3.png" alt="Image 3">
         <img src="1.png" alt="Image 1">
     </div>
