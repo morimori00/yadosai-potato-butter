@@ -26,6 +26,14 @@
         .coupon img{
             /* make white wide shadow to see like floating */
             filter: drop-shadow(0 0 0.75rem white);
+            /* add animation */
+            animation: shake 3s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
         }
         img {
             width: 100%;
@@ -87,8 +95,13 @@ button::before {
                 coupon.style.transform = 'rotate(0deg)';
                 coupon.style.width = '100%';
                 coupon.style.height = 'auto';
+                
                 //couponを元の位置に戻す
                 coupon.style.marginTop = '0';
+                coupon.style.marginLeft = '0';
+                //couponのアニメーションを再開する
+                coupon.style.animation = 'shake 3s infinite';
+                
             } else {
                 islarge = true;
                 //couponのpaddingを0にする
@@ -97,10 +110,13 @@ button::before {
                 coupondiv.style.height="95vh";
                 var coupon = document.querySelector('.coupon img');
                 coupon.style.transform = 'rotate(90deg)';
-                coupon.style.width = '100vw';
+                coupon.style.width = '130vw';
                 coupon.style.height = 'auto';
                 //couponを少し下に動かす
                 coupon.style.marginTop = '120px';
+                coupon.style.marginLeft = '-70px';
+                //couponのアニメーションを止める
+                coupon.style.animation = 'none';
             }
         }
         // クリップボードへコピー（コピーの処理）
