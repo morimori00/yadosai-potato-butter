@@ -103,11 +103,26 @@ button::before {
                 coupon.style.marginTop = '120px';
             }
         }
+        // クリップボードへコピー（コピーの処理）
+function copyToClipboard (tagValue) {
+  if (navigator.clipboard) {
+    return navigator.clipboard.writeText(tagValue).then(function () {
+      messageActive()
+    })
+  } else {
+    tagText.select()
+    document.execCommand('copy')
+    messageActive()
+  }
+}
         async function share(){
+            url="https://x.gd/cEkbU"
      try {
-       await navigator.share({ title: document.title, url: "https://x.gd/cEkbU" });
+       await navigator.share({ title: document.title, url: url });
      } catch (error) {
        console.error(error);
+       copyToClipboard(url);
+       window.alert("リンクをコピーしました😎LINEに貼り付けて共有してください！");
         }
     }
     </script>
